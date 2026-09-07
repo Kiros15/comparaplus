@@ -88,7 +88,7 @@
 
 <section id="destacados" class="section offers-section">
   <div class="container">
-    <div class="section-heading"><div><span class="kicker">OFERTAS VERIFICADAS</span><h2>Compara productos reales</h2><p>Condiciones publicadas por las entidades. Verificadas el 7/09/2026.</p></div><span class="updated">● Datos oficiales</span></div>
+    <div class="section-heading"><div><span class="kicker">OFERTAS VERIFICADAS</span><h2>Compara productos reales</h2><p>Condiciones publicadas por las entidades. Verificadas el 7/09/2026.</p></div><span class="updated">● Datos oficiales</span><span id="catalogStatus" class="updated" aria-live="polite">● Conectando catálogo…</span></div>
     <div class="filters">
       <select id="filterCategory" aria-label="Categoría"><option value="">Todas las categorías</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option></select>
       <select id="filterType" aria-label="Tipo"><option value="">Todos los tipos</option></select>
@@ -101,27 +101,16 @@
 
 <section id="comparar" class="compare-section">
   <div class="container compare-box functional-compare">
-    <div class="compare-copy"><span class="kicker light">COMPARADOR AVANZADO</span><h2>Encuentra las opciones que mejor encajan contigo.</h2><p>Introduce tus datos y ComparaPlus ordenará las ofertas según coste, condiciones, requisitos y flexibilidad.</p><div class="secure"><span>✓</span> Sin registro <span>✓</span> Resultado orientativo <span>✓</span> Compara hasta 3</div></div>
+    <div class="compare-copy"><span class="kicker light">COMPARADOR FUNCIONAL</span><h2>Calcula y compara</h2><p>Elige un producto, introduce tus cifras y obtén una estimación orientativa.</p><div class="secure"><span>✓</span> Cálculo en el navegador <span>✓</span> Sin registro</div></div>
     <form class="compare-form" id="compareForm">
-      <label for="category">¿Qué quieres comparar?</label>
-      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option><option>Tarjetas</option><option>Seguros</option></select>
+      <label for="category">Producto</label>
+      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option></select>
       <div id="calculatorFields"></div>
-      <button class="primary-btn" type="submit">Ver mi ranking <b>→</b></button>
-      <small>El ComparaPlus Score es orientativo y no constituye una recomendación financiera personalizada.</small>
+      <button class="primary-btn" type="submit">Calcular y comparar <b>→</b></button>
+      <small>Los cálculos son orientativos y no constituyen una oferta.</small>
     </form>
   </div>
   <div class="container compare-output" id="compareOutput" hidden></div>
-</section>
-
-<section class="section score-explainer container">
-  <div class="section-heading"><div><span class="kicker">COMPARAPLUS SCORE</span><h2>Un ranking pensado para comparar mejor</h2><p>No miramos solo un tipo de interés: combinamos coste, comisiones, condiciones, requisitos y flexibilidad.</p></div></div>
-  <div class="score-grid">
-    <div class="score-card"><strong>40%</strong><span>Coste / TAE</span><p>Prioriza el coste efectivo cuando el dato está disponible.</p></div>
-    <div class="score-card"><strong>20%</strong><span>Condiciones</span><p>Valora plazo, importe y características del producto.</p></div>
-    <div class="score-card"><strong>15%</strong><span>Comisiones</span><p>Penaliza costes de apertura y mantenimiento.</p></div>
-    <div class="score-card"><strong>15%</strong><span>Requisitos</span><p>Cuanto más exigentes, menor puntuación.</p></div>
-    <div class="score-card"><strong>10%</strong><span>Flexibilidad</span><p>Considera opciones de amortización y contratación.</p></div>
-  </div>
 </section>
 
 <section id="seleccion" class="section container">
@@ -147,6 +136,6 @@
 </footer>
 <div id="toast" class="toast" role="status"></div>
 <script>window.CP_PRODUCTS = [{"id": "ob-hipoteca-fija", "category": "Hipotecas", "type": "Fija", "bank": "Openbank", "name": "Hipoteca Fija Openbank", "tin": "2,80%", "tae": "3,41%", "term": "5–30 años", "fee": "Consultar", "highlight": "Desde 2,80% TIN con bonificación", "requirements": "El interés varía según importe y plazo; bonificación sujeta a condiciones.", "url": "https://www.openbank.es/hipoteca-open", "source": "Openbank", "verified": "07/09/2026"}, {"id": "ibk-hipoteca-vamos", "category": "Hipotecas", "type": "Fija", "bank": "Ibercaja", "name": "Hipoteca Fija Vamos", "tin": "2,55%*", "tae": "3,49%*", "term": "Hasta 25 años", "fee": "Consultar", "highlight": "2,55% TIN con bonificación", "requirements": "Hasta el 80% para vivienda habitual; bonificaciones por nómina, tarjeta, recibos, seguros y fondos.", "url": "https://www.ibercaja.es/particulares/hipotecas-prestamos/hipotecas/hipoteca-vamos-fija/", "source": "Ibercaja", "verified": "07/09/2026"}, {"id": "bk-hipoteca-fija", "category": "Hipotecas", "type": "Fija", "bank": "Bankinter", "name": "Hipoteca Fija Bankinter", "tin": "Personalizado", "tae": "Personalizada", "term": "Hasta 30 años", "fee": "500 € apertura*", "highlight": "Simulación y oferta personalizada", "requirements": "El precio depende de importe, plazo y bonificaciones.", "url": "https://www.bankinter.com/banca/hipotecas-prestamos/hipotecas/hipoteca-fija", "source": "Bankinter", "verified": "07/09/2026"}, {"id": "ing-prestamo-naranja", "category": "Préstamos", "type": "Personal", "bank": "ING", "name": "Préstamo NARANJA", "tin": "5,49–12,49%", "tae": "5,63–13,23%", "term": "12–96 meses", "fee": "0 € apertura / amortización", "highlight": "Sin comisión de apertura ni amortización", "requirements": "Importe 3.000–60.000 €. Tipo sujeto al análisis de la solicitud.", "url": "https://www.ing.es/prestamos-personales", "source": "ING", "verified": "07/09/2026"}, {"id": "openbank-cuenta-rem", "category": "Cuentas", "type": "Remunerada", "bank": "Openbank", "name": "Cuenta Remunerada Openbank", "tin": "2,72%", "tae": "2,75%", "term": "12 meses", "fee": "0 €", "highlight": "2,75% TAE durante un año", "requirements": "Nuevos clientes; activar Bizum y traer ahorros. Promo 200 € con 2 recibos hasta 30/09/2026.", "url": "https://www.openbank.es/cuenta-remunerada", "source": "Openbank", "verified": "07/09/2026"}, {"id": "ing-cuenta-nomina", "category": "Cuentas", "type": "Nómina", "bank": "ING", "name": "Cuenta NÓMINA + Cuenta NARANJA", "tin": "0% / 1,00%", "tae": "0% / 1,00%", "term": "Sin plazo", "fee": "0 € con condiciones", "highlight": "Hasta 400 € de bienvenida", "requirements": "Nómina o ingresos recurrentes ≥700 €/mes y Bizum; promoción según condiciones.", "url": "https://www.ing.es/cuenta-nomina-ing", "source": "ING", "verified": "07/09/2026"}, {"id": "ing-deposito-bienvenida", "category": "Depósitos", "type": "3 meses", "bank": "ING", "name": "Depósito Bienvenida", "tin": "3%", "tae": "3%", "term": "3 meses", "fee": "0 €", "highlight": "3% TAE a 3 meses", "requirements": "Para nuevos clientes; promoción indicada por ING hasta 30/09/2026.", "url": "https://www.ing.es/ahorro-ing", "source": "ING", "verified": "07/09/2026"}, {"id": "openbank-deposito-6", "category": "Depósitos", "type": "6 meses", "bank": "Openbank", "name": "Depósito Open 6 meses", "tin": "2,48%", "tae": "2,50%", "term": "6 meses", "fee": "0 €", "highlight": "2,50% TAE con ingresos mensuales", "requirements": "Con ingresos mensuales ≥900 €; sin ello, 1,25% TAE.", "url": "https://www.openbank.es/deposito-a-plazo-fijo", "source": "Openbank", "verified": "07/09/2026"}];</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script><script src="script.js"></script>
+<script src="supabase-config.js"></script><script src="script.js?v=20260907"></script>
 </body>
 </html>

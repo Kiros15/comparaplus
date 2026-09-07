@@ -1,37 +1,37 @@
-# ComparaPlus V4 — Panel privado + Fase 3
+# ComparaPlus.net — V4 Fase 3 conectada a Supabase
 
-Esta versión parte de V3 y añade la base de la fase 3:
-
-- Supabase/PostgreSQL como fuente de productos.
-- Panel privado en `/admin/` con login de Supabase Auth.
-- CRUD de productos: crear, editar, borrar, activar/desactivar y destacar.
-- Campos preparados para enlaces de afiliación, importes y fecha de verificación.
-- RLS: productos activos son públicos; escritura y gestión solo para usuarios incluidos en `admins`.
-- La web pública intenta cargar productos desde Supabase y mantiene los 8 productos de V3 como fallback si Supabase no está configurado.
-- GA4, AdSense y Search Console se mantienen.
-
-## Configuración rápida
-
-1. Crea un proyecto en Supabase.
-2. Ejecuta `supabase/schema.sql` completo en SQL Editor.
-3. Crea tu usuario en Authentication > Users.
-4. Añade ese usuario a `public.admins` con el SQL indicado en `supabase/README.md`.
-5. Edita `supabase-config.js` con la URL y la publishable/anon key. **Nunca pongas service_role/secret key en el frontend.**
-6. Sube todo a GitHub y deja que Vercel despliegue.
-7. Entra en `https://www.comparaplus.net/admin/`.
-
-## Siguiente bloque de Fase 3
-
-- Cargar 50–100 productos reales.
-- Crear páginas SEO dinámicas por categoría, entidad y producto.
-- Motor de ranking por perfil y condiciones.
-- Sistema de enlaces de afiliación por producto.
-- Histórico de cambios y fecha de última verificación.
-- Preparación para leads de hipotecas/préstamos/seguros.
-
-## Fase 3 incluida
-- Comparador avanzado por perfil (importe, plazo, ingresos/ahorros cuando aplica).
-- ComparaPlus Score 0-100 con ranking de productos.
-- Resultados ordenados por score y acceso a oferta oficial/afiliada.
+Versión lista para Vercel con:
+- ComparaPlus Score 0–100 y ranking por perfil.
 - Comparación lado a lado de hasta 3 productos.
-- Arquitectura preparada para ampliar categorías, productos y reglas de scoring.
+- Supabase como fuente de datos pública: carga automáticamente todos los productos con `active = true`.
+- Panel privado `/admin/` para crear, editar, activar/desactivar, destacar y borrar productos.
+- RLS: el público solo lee productos activos; los administradores gestionan el catálogo.
+- Enlaces de afiliación por producto (`affiliate_url`) con fallback al enlace oficial (`url`).
+- GA4, AdSense y Search Console conservados.
+- Fallback local a los productos incluidos en la web si Supabase no responde.
+
+## Supabase ya configurado
+`supabase-config.js` contiene la URL y publishable key del proyecto configurado para ComparaPlus.
+
+**Nunca sustituirla por una service_role/secret key.**
+
+## Publicación en Vercel
+1. Sustituye el contenido de tu repositorio por el contenido de esta carpeta.
+2. Haz commit/push a GitHub.
+3. Vercel desplegará automáticamente.
+4. Comprueba `https://www.comparaplus.net/`.
+5. Comprueba `https://www.comparaplus.net/admin/` e inicia sesión con tu usuario de Supabase.
+
+## Comprobación del catálogo
+La base de datos puede contener 50 productos, pero la web pública muestra únicamente los que tengan `active = true`.
+
+Para comprobar el total en Supabase:
+```sql
+select category, count(*) as total
+from public.products
+group by category
+order by category;
+```
+
+## Flujo de trabajo futuro
+Para añadir o cambiar un producto no hace falta modificar el código: entra en `/admin/`, edita el producto y guarda. La web pública lo leerá desde Supabase automáticamente en la siguiente carga.
