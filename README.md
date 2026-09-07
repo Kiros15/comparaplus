@@ -35,3 +35,15 @@ order by category;
 
 ## Flujo de trabajo futuro
 Para añadir o cambiar un producto no hace falta modificar el código: entra en `/admin/`, edita el producto y guarda. La web pública lo leerá desde Supabase automáticamente en la siguiente carga.
+
+
+## Monetización / afiliación
+- `products.affiliate_url`: enlace de tracking de afiliación.
+- `affiliate_network`: red utilizada (Awin, TradeDoubler, etc.).
+- `commission_model`: CPA, CPL, RevShare o CPC.
+- `commission_value`: valor orientativo de la comisión.
+- `commercial_priority`: prioridad comercial para ordenar ofertas; úsala con moderación y mantén la metodología editorial separada.
+- `sponsored`: marca una oferta patrocinada para poder señalizarla.
+- `product_clicks`: registra clics de afiliación/oficiales para analítica interna.
+- El botón público usa `affiliate_url` cuando existe y `url` como fallback.
+- No introduzcas nunca claves `service_role` en el frontend.
