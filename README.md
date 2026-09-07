@@ -28,3 +28,10 @@ Esta versión parte de V3 y añade la base de la fase 3:
 - Sistema de enlaces de afiliación por producto.
 - Histórico de cambios y fecha de última verificación.
 - Preparación para leads de hipotecas/préstamos/seguros.
+
+## Fase 3 incluida
+- Comparador avanzado por perfil (importe, plazo, ingresos/ahorros cuando aplica).
+- ComparaPlus Score 0-100 con ranking de productos.
+- Resultados ordenados por score y acceso a oferta oficial/afiliada.
+- Comparación lado a lado de hasta 3 productos.
+- Arquitectura preparada para ampliar categorías, productos y reglas de scoring.

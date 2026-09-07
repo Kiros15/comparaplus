@@ -101,16 +101,27 @@
 
 <section id="comparar" class="compare-section">
   <div class="container compare-box functional-compare">
-    <div class="compare-copy"><span class="kicker light">COMPARADOR FUNCIONAL</span><h2>Calcula y compara</h2><p>Elige un producto, introduce tus cifras y obtén una estimación orientativa.</p><div class="secure"><span>✓</span> Cálculo en el navegador <span>✓</span> Sin registro</div></div>
+    <div class="compare-copy"><span class="kicker light">COMPARADOR AVANZADO</span><h2>Encuentra las opciones que mejor encajan contigo.</h2><p>Introduce tus datos y ComparaPlus ordenará las ofertas según coste, condiciones, requisitos y flexibilidad.</p><div class="secure"><span>✓</span> Sin registro <span>✓</span> Resultado orientativo <span>✓</span> Compara hasta 3</div></div>
     <form class="compare-form" id="compareForm">
-      <label for="category">Producto</label>
-      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option></select>
+      <label for="category">¿Qué quieres comparar?</label>
+      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option><option>Tarjetas</option><option>Seguros</option></select>
       <div id="calculatorFields"></div>
-      <button class="primary-btn" type="submit">Calcular y comparar <b>→</b></button>
-      <small>Los cálculos son orientativos y no constituyen una oferta.</small>
+      <button class="primary-btn" type="submit">Ver mi ranking <b>→</b></button>
+      <small>El ComparaPlus Score es orientativo y no constituye una recomendación financiera personalizada.</small>
     </form>
   </div>
   <div class="container compare-output" id="compareOutput" hidden></div>
+</section>
+
+<section class="section score-explainer container">
+  <div class="section-heading"><div><span class="kicker">COMPARAPLUS SCORE</span><h2>Un ranking pensado para comparar mejor</h2><p>No miramos solo un tipo de interés: combinamos coste, comisiones, condiciones, requisitos y flexibilidad.</p></div></div>
+  <div class="score-grid">
+    <div class="score-card"><strong>40%</strong><span>Coste / TAE</span><p>Prioriza el coste efectivo cuando el dato está disponible.</p></div>
+    <div class="score-card"><strong>20%</strong><span>Condiciones</span><p>Valora plazo, importe y características del producto.</p></div>
+    <div class="score-card"><strong>15%</strong><span>Comisiones</span><p>Penaliza costes de apertura y mantenimiento.</p></div>
+    <div class="score-card"><strong>15%</strong><span>Requisitos</span><p>Cuanto más exigentes, menor puntuación.</p></div>
+    <div class="score-card"><strong>10%</strong><span>Flexibilidad</span><p>Considera opciones de amortización y contratación.</p></div>
+  </div>
 </section>
 
 <section id="seleccion" class="section container">
