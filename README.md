@@ -1,14 +1,9 @@
-# ComparaPlus V2 Professional
+# ComparaPlus V3 — MVP funcional
 
-Versión profesional de ComparaPlus, preparada para GitHub + Vercel.
+Incluye comparador real de productos, filtros, comparativa hasta 3 productos, calculadoras orientativas y tracking GA4.
 
-## Integraciones incluidas
-- Google Search Console: verificación mediante meta tag.
-- Google Analytics: G-V8HKVSPEJD.
-- Google AdSense: ca-pub-2781521462195370.
+Datos iniciales: 8 productos de Openbank, Ibercaja, Bankinter e ING, verificados en sus páginas oficiales el 07/09/2026.
 
-## Deploy
-Subir el contenido de este ZIP al repositorio conectado con Vercel. No requiere build: es una web HTML/CSS/JS estática.
+La V3 no inventa condiciones: cuando una entidad muestra un precio personalizado se indica como personalizado. Las condiciones pueden cambiar y deben comprobarse antes de contratar.
 
-## Dominio
-https://comparaplus.net
+Próxima fase: Supabase/PostgreSQL + panel de administración + más productos + páginas SEO dinámicas + enlaces de afiliación cuando existan acuerdos.

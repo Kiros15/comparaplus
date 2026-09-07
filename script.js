@@ -1,34 +1,18 @@
-const toastEl = document.getElementById('toast');
-let toastTimer;
-function toast(message){
-  toastEl.textContent = message;
-  toastEl.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>toastEl.classList.remove('show'),2600);
-}
-
-const category = document.getElementById('category');
-document.querySelectorAll('[data-cat]').forEach(card=>{
-  card.addEventListener('click',()=>{
-    category.value = card.dataset.cat;
-  });
-});
-
-document.getElementById('compareForm').addEventListener('submit',(e)=>{
-  e.preventDefault();
-  if(!category.value){toast('Selecciona una categoría para empezar.');return;}
-  toast(`Comparador de ${category.value}: esta demo está lista para conectar ofertas reales.`);
-});
-
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
-menuBtn.addEventListener('click',()=>{
-  const open = mobileMenu.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(open));
-  menuBtn.textContent = open ? '×' : '☰';
-});
-document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{
-  mobileMenu.classList.remove('open');
-  menuBtn.setAttribute('aria-expanded','false');
-  menuBtn.textContent='☰';
-}));
+const products=window.CP_PRODUCTS||[];const toastEl=document.getElementById('toast');let toastTimer;
+function toast(m){if(!toastEl)return;toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove('show'),2600)}
+function euro(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n)}
+function pct(n){return Number(n).toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+'%'}
+function ga(e,p={}){if(typeof gtag==='function')gtag('event',e,p)}
+const category=document.getElementById('category'),filterCategory=document.getElementById('filterCategory'),filterType=document.getElementById('filterType'),filterSearch=document.getElementById('filterSearch'),results=document.getElementById('productResults'),calcFields=document.getElementById('calculatorFields'),compareTray=document.getElementById('compareTray'),sideBySide=document.getElementById('sideBySide');let selected=[];
+function populateTypes(){const c=filterCategory.value,t=[...new Set(products.filter(p=>!c||p.category===c).map(p=>p.type))].sort();filterType.innerHTML='<option value="">Todos los tipos</option>'+t.map(x=>`<option>${x}</option>`).join('')}
+function filtered(){const c=filterCategory.value,t=filterType.value,q=(filterSearch.value||'').toLowerCase();return products.filter(p=>(!c||p.category===c)&&(!t||p.type===t)&&(!q||`${p.bank} ${p.name} ${p.category}`.toLowerCase().includes(q)))}
+function card(p){return `<article class="real-product"><div class="rp-main"><div class="bank-badge">${p.bank[0]}</div><div><span class="rp-cat">${p.category} · ${p.type}</span><h3>${p.name}</h3><p>${p.highlight}</p></div></div><div class="rp-metrics"><div><small>TIN</small><strong>${p.tin}</strong></div><div><small>TAE</small><strong>${p.tae}</strong></div><div><small>Plazo</small><strong>${p.term}</strong></div><div><small>Comisiones</small><strong>${p.fee}</strong></div></div><div class="rp-actions"><label class="compare-check"><input type="checkbox" data-compare="${p.id}" ${selected.includes(p.id)?'checked':''}> Comparar</label><a class="offer-btn" href="${p.url}" target="_blank" rel="noopener noreferrer" data-outbound="${p.id}">Ver oferta ↗</a></div><div class="rp-foot">Fuente: ${p.source} · Verificado ${p.verified} · ${p.requirements}</div></article>`}
+function renderResults(){results.innerHTML=filtered().map(card).join('')||'<div class="empty-state">No encontramos productos con esos filtros.</div>';results.querySelectorAll('[data-compare]').forEach(el=>el.onchange=()=>{const id=el.dataset.compare;if(el.checked){if(selected.length>=3){el.checked=false;toast('Puedes comparar hasta 3 productos.');return}selected.push(id)}else selected=selected.filter(x=>x!==id);renderResults();renderCompare()});results.querySelectorAll('[data-outbound]').forEach(a=>a.onclick=()=>{const p=products.find(x=>x.id===a.dataset.outbound);ga('outbound_product_click',{product_name:p?.name,bank:p?.bank,category:p?.category})})}
+function renderCompare(){if(!selected.length){compareTray.className='compare-tray empty';compareTray.textContent='Aún no has seleccionado productos.';sideBySide.innerHTML='';return}const ps=selected.map(id=>products.find(p=>p.id===id)).filter(Boolean);compareTray.className='compare-tray';compareTray.innerHTML=ps.map(p=>`<span>${p.bank} · ${p.name}<button type="button" data-remove="${p.id}">×</button></span>`).join('');compareTray.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{selected=selected.filter(x=>x!==b.dataset.remove);renderResults();renderCompare()});sideBySide.innerHTML=`<div class="compare-table"><div class="ct-head"><span>Producto</span>${ps.map(p=>`<strong>${p.bank}</strong>`).join('')}</div>${[['Producto','name'],['Categoría','category'],['TIN','tin'],['TAE','tae'],['Plazo','term'],['Comisiones','fee']].map(([l,k])=>`<div class="ct-row"><span>${l}</span>${ps.map(p=>`<span>${p[k]}</span>`).join('')}</div>`).join('')}<div class="ct-row"><span></span>${ps.map(p=>`<span><a class="offer-btn" href="${p.url}" target="_blank" rel="noopener noreferrer">Ver oferta ↗</a></span>`).join('')}</div></div>`;ga('compare_products',{products:ps.map(p=>p.name).join('|')})}
+function setupCalc(){const c=category.value;if(c==='Hipotecas')calcFields.innerHTML='<label>Importe <input id="amount" type="number" min="10000" step="5000" value="200000" required></label><label>Plazo <select id="months"><option value="240">20 años</option><option value="300" selected>25 años</option><option value="360">30 años</option></select></label><label>Tipo anual estimado <input id="rate" type="number" step="0.01" value="2.8" required></label>';else if(c==='Préstamos')calcFields.innerHTML='<label>Importe <input id="amount" type="number" min="3000" step="500" value="10000" required></label><label>Plazo <select id="months"><option>36</option><option selected>60</option><option>84</option></select></label><label>Tipo anual estimado <input id="rate" type="number" step="0.01" value="5.63" required></label>';else if(c==='Cuentas'||c==='Depósitos')calcFields.innerHTML=`<label>Ahorro <input id="amount" type="number" min="0" step="500" value="10000" required></label><label>TAE estimada <input id="rate" type="number" step="0.01" value="${c==='Cuentas'?2.75:3}" required></label><label>Meses <select id="months"><option>3</option><option>6</option><option selected>12</option></select></label>`;else calcFields.innerHTML=''}
+category.onchange=setupCalc;
+document.querySelectorAll('[data-cat]').forEach(c=>c.onclick=()=>{category.value=c.dataset.cat;setupCalc()});
+document.getElementById('compareForm').onsubmit=e=>{e.preventDefault();const c=category.value;if(!c){toast('Selecciona una categoría para empezar.');return}const amount=Number(document.getElementById('amount')?.value||0),rate=Number(document.getElementById('rate')?.value||0),months=Number(document.getElementById('months')?.value||0);let h='';if(c==='Hipotecas'||c==='Préstamos'){const r=rate/100/12,n=months,p=r?amount*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):amount/n;h=`<div class="calc-result"><span>Cuota estimada</span><strong>${euro(p)}/mes</strong><small>Capital: ${euro(amount)} · Plazo: ${n} meses · Tipo usado: ${pct(rate)} · Total pagado aprox.: ${euro(p*n)}</small></div>`}else{const i=amount*(rate/100)*(months/12);h=`<div class="calc-result"><span>Interés bruto estimado</span><strong>${euro(i)}</strong><small>Ahorro: ${euro(amount)} · ${pct(rate)} TAE orientativa · ${months} meses · Fiscalidad no incluida.</small></div>`}const out=document.getElementById('compareOutput');out.hidden=false;out.innerHTML=h;out.scrollIntoView({behavior:'smooth',block:'center'});ga('calculator_submit',{category:c,amount,rate,months})};
+filterCategory.onchange=()=>{populateTypes();renderResults()};filterType.onchange=renderResults;filterSearch.oninput=renderResults;
+const menuBtn=document.getElementById('menuBtn'),mobileMenu=document.getElementById('mobileMenu');if(menuBtn)menuBtn.onclick=()=>{const o=mobileMenu.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(o));menuBtn.textContent=o?'×':'☰'};document.querySelectorAll('.mobile-menu a').forEach(a=>a.onclick=()=>{mobileMenu.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'});
+populateTypes();setupCalc();renderResults();renderCompare();

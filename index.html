@@ -70,7 +70,7 @@
 </section>
 
 <section class="stats">
-  <div class="container stats-grid"><div><strong>6</strong><span>categorías financieras</span></div><div><strong>100%</strong><span>información clara</span></div><div><strong>24/7</strong><span>compara cuando quieras</span></div><div><strong>1</strong><span>lugar para decidir</span></div></div>
+  <div class="container stats-grid"><div><strong>4</strong><span>categorías con datos</span></div><div><strong>8</strong><span>ofertas verificadas</span></div><div><strong>1</strong><span>motor de comparación</span></div><div><strong>0 €</strong><span>por comparar</span></div></div>
 </section>
 
 <section id="comparadores" class="section container">
@@ -85,31 +85,39 @@
   </div>
 </section>
 
+
 <section id="destacados" class="section offers-section">
   <div class="container">
-    <div class="section-heading"><div><span class="kicker">OPCIONES DESTACADAS</span><h2>Empieza por aquí</h2><p>Ejemplos de cómo presentaremos las mejores alternativas de cada categoría.</p></div><span class="updated">● Actualizado hoy</span></div>
-    <div class="offer-table">
-      <div class="offer-head"><span>PRODUCTO</span><span>CONDICIÓN PRINCIPAL</span><span>COMISIONES</span><span></span></div>
-      <article class="offer-row"><div class="product"><div class="logo-placeholder">B</div><div><b>Cuenta remunerada</b><small>Cuenta bancaria</small></div><label>Destacada</label></div><div class="metric"><strong>Hasta 2,50%</strong><small>TAE</small></div><div class="metric"><strong>0 €</strong><small>mantenimiento</small></div><a class="offer-btn" href="#comparar">Ver opción</a></article>
-      <article class="offer-row"><div class="product"><div class="logo-placeholder">M</div><div><b>Hipoteca fija</b><small>Financiación vivienda</small></div></div><div class="metric"><strong>Desde 2,65%</strong><small>TAE orientativa</small></div><div class="metric"><strong>Consultar</strong><small>según perfil</small></div><a class="offer-btn" href="#comparar">Comparar</a></article>
-      <article class="offer-row"><div class="product"><div class="logo-placeholder">P</div><div><b>Préstamo personal</b><small>Financiación</small></div></div><div class="metric"><strong>Desde 6,90%</strong><small>TAE orientativa</small></div><div class="metric"><strong>0 €</strong><small>en condiciones</small></div><a class="offer-btn" href="#comparar">Comparar</a></article>
+    <div class="section-heading"><div><span class="kicker">OFERTAS VERIFICADAS</span><h2>Compara productos reales</h2><p>Condiciones publicadas por las entidades. Verificadas el 7/09/2026.</p></div><span class="updated">● Datos oficiales</span></div>
+    <div class="filters">
+      <select id="filterCategory" aria-label="Categoría"><option value="">Todas las categorías</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option></select>
+      <select id="filterType" aria-label="Tipo"><option value="">Todos los tipos</option></select>
+      <input id="filterSearch" type="search" placeholder="Buscar entidad o producto…" aria-label="Buscar">
     </div>
-    <p class="legal-note">* Los datos mostrados son ejemplos de diseño y no constituyen una oferta financiera. Las condiciones reales pueden variar según entidad, producto y perfil del cliente.</p>
+    <div id="productResults" class="product-results"></div>
+    <p class="legal-note">Los datos son informativos y pueden cambiar. La aprobación, tipo final y condiciones dependen de cada entidad y del perfil del cliente. Comprueba siempre la documentación precontractual antes de contratar.</p>
   </div>
 </section>
 
 <section id="comparar" class="compare-section">
-  <div class="container compare-box">
-    <div class="compare-copy"><span class="kicker light">COMPARA EN MENOS DE UN MINUTO</span><h2>¿Qué quieres comparar?</h2><p>Selecciona una categoría y te llevaremos al comparador correspondiente.</p><div class="secure"><span>✓</span> Proceso sencillo <span>✓</span> Sin compromiso</div></div>
+  <div class="container compare-box functional-compare">
+    <div class="compare-copy"><span class="kicker light">COMPARADOR FUNCIONAL</span><h2>Calcula y compara</h2><p>Elige un producto, introduce tus cifras y obtén una estimación orientativa.</p><div class="secure"><span>✓</span> Cálculo en el navegador <span>✓</span> Sin registro</div></div>
     <form class="compare-form" id="compareForm">
-      <label for="category">Elige una categoría</label>
-      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Tarjetas</option><option>Depósitos</option><option>Seguros</option><option>Inversión</option></select>
-      <button class="primary-btn" type="submit">Comparar opciones <b>→</b></button>
-      <small>Te mostraremos las opciones disponibles para esa categoría.</small>
+      <label for="category">Producto</label>
+      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Depósitos</option></select>
+      <div id="calculatorFields"></div>
+      <button class="primary-btn" type="submit">Calcular y comparar <b>→</b></button>
+      <small>Los cálculos son orientativos y no constituyen una oferta.</small>
     </form>
   </div>
+  <div class="container compare-output" id="compareOutput" hidden></div>
 </section>
 
+<section id="seleccion" class="section container">
+  <div class="section-heading"><div><span class="kicker">TU COMPARATIVA</span><h2>Compara lado a lado</h2><p>Selecciona hasta 3 productos desde los resultados.</p></div></div>
+  <div id="compareTray" class="compare-tray empty">Aún no has seleccionado productos.</div>
+  <div id="sideBySide" class="side-by-side"></div>
+</section>
 <section id="guias" class="section container guides">
   <div class="section-heading"><div><span class="kicker">GUÍAS COMPARAPLUS</span><h2>Antes de elegir, infórmate</h2><p>Explicaciones sencillas para entender las condiciones que realmente importan.</p></div><a class="view-all" href="#guias">Todas las guías →</a></div>
   <div class="guide-grid">
@@ -124,9 +132,9 @@
 
 <footer>
   <div class="container footer-main"><div class="footer-brand"><img src="assets/logo.svg" alt="ComparaPlus"><p>Compara. Elige. Ahorra.</p></div><div class="footer-col"><b>Comparadores</b><a href="#comparar">Hipotecas</a><a href="#comparar">Préstamos</a><a href="#comparar">Cuentas</a><a href="#comparar">Tarjetas</a></div><div class="footer-col"><b>Compañía</b><a href="#guias">Guías</a><a href="#">Sobre nosotros</a><a href="#">Contacto</a></div><div class="footer-col"><b>Legal</b><a href="#">Privacidad</a><a href="#">Cookies</a><a href="#">Aviso legal</a></div></div>
-  <div class="container footer-bottom"><span>© 2026 ComparaPlus.net</span><span>Información independiente para comparar mejor.</span></div>
+  <div class="container footer-bottom"><span>© 2026 ComparaPlus.net</span><span>Comparador informativo. Las condiciones pertenecen a cada entidad y pueden cambiar.</span></div>
 </footer>
 <div id="toast" class="toast" role="status"></div>
-<script src="script.js"></script>
+<script>window.CP_PRODUCTS = [{"id": "ob-hipoteca-fija", "category": "Hipotecas", "type": "Fija", "bank": "Openbank", "name": "Hipoteca Fija Openbank", "tin": "2,80%", "tae": "3,41%", "term": "5–30 años", "fee": "Consultar", "highlight": "Desde 2,80% TIN con bonificación", "requirements": "El interés varía según importe y plazo; bonificación sujeta a condiciones.", "url": "https://www.openbank.es/hipoteca-open", "source": "Openbank", "verified": "07/09/2026"}, {"id": "ibk-hipoteca-vamos", "category": "Hipotecas", "type": "Fija", "bank": "Ibercaja", "name": "Hipoteca Fija Vamos", "tin": "2,55%*", "tae": "3,49%*", "term": "Hasta 25 años", "fee": "Consultar", "highlight": "2,55% TIN con bonificación", "requirements": "Hasta el 80% para vivienda habitual; bonificaciones por nómina, tarjeta, recibos, seguros y fondos.", "url": "https://www.ibercaja.es/particulares/hipotecas-prestamos/hipotecas/hipoteca-vamos-fija/", "source": "Ibercaja", "verified": "07/09/2026"}, {"id": "bk-hipoteca-fija", "category": "Hipotecas", "type": "Fija", "bank": "Bankinter", "name": "Hipoteca Fija Bankinter", "tin": "Personalizado", "tae": "Personalizada", "term": "Hasta 30 años", "fee": "500 € apertura*", "highlight": "Simulación y oferta personalizada", "requirements": "El precio depende de importe, plazo y bonificaciones.", "url": "https://www.bankinter.com/banca/hipotecas-prestamos/hipotecas/hipoteca-fija", "source": "Bankinter", "verified": "07/09/2026"}, {"id": "ing-prestamo-naranja", "category": "Préstamos", "type": "Personal", "bank": "ING", "name": "Préstamo NARANJA", "tin": "5,49–12,49%", "tae": "5,63–13,23%", "term": "12–96 meses", "fee": "0 € apertura / amortización", "highlight": "Sin comisión de apertura ni amortización", "requirements": "Importe 3.000–60.000 €. Tipo sujeto al análisis de la solicitud.", "url": "https://www.ing.es/prestamos-personales", "source": "ING", "verified": "07/09/2026"}, {"id": "openbank-cuenta-rem", "category": "Cuentas", "type": "Remunerada", "bank": "Openbank", "name": "Cuenta Remunerada Openbank", "tin": "2,72%", "tae": "2,75%", "term": "12 meses", "fee": "0 €", "highlight": "2,75% TAE durante un año", "requirements": "Nuevos clientes; activar Bizum y traer ahorros. Promo 200 € con 2 recibos hasta 30/09/2026.", "url": "https://www.openbank.es/cuenta-remunerada", "source": "Openbank", "verified": "07/09/2026"}, {"id": "ing-cuenta-nomina", "category": "Cuentas", "type": "Nómina", "bank": "ING", "name": "Cuenta NÓMINA + Cuenta NARANJA", "tin": "0% / 1,00%", "tae": "0% / 1,00%", "term": "Sin plazo", "fee": "0 € con condiciones", "highlight": "Hasta 400 € de bienvenida", "requirements": "Nómina o ingresos recurrentes ≥700 €/mes y Bizum; promoción según condiciones.", "url": "https://www.ing.es/cuenta-nomina-ing", "source": "ING", "verified": "07/09/2026"}, {"id": "ing-deposito-bienvenida", "category": "Depósitos", "type": "3 meses", "bank": "ING", "name": "Depósito Bienvenida", "tin": "3%", "tae": "3%", "term": "3 meses", "fee": "0 €", "highlight": "3% TAE a 3 meses", "requirements": "Para nuevos clientes; promoción indicada por ING hasta 30/09/2026.", "url": "https://www.ing.es/ahorro-ing", "source": "ING", "verified": "07/09/2026"}, {"id": "openbank-deposito-6", "category": "Depósitos", "type": "6 meses", "bank": "Openbank", "name": "Depósito Open 6 meses", "tin": "2,48%", "tae": "2,50%", "term": "6 meses", "fee": "0 €", "highlight": "2,50% TAE con ingresos mensuales", "requirements": "Con ingresos mensuales ≥900 €; sin ello, 1,25% TAE.", "url": "https://www.openbank.es/deposito-a-plazo-fijo", "source": "Openbank", "verified": "07/09/2026"}];</script><script src="script.js"></script>
 </body>
 </html>
