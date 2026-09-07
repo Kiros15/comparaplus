@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="ComparaPlus">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1b5cff"/><stop offset="1" stop-color="#19b6a5"/></linearGradient></defs>
+<g transform="translate(8 8)"><circle cx="47" cy="47" r="35" fill="none" stroke="url(#g)" stroke-width="11"/><path d="M72 72L101 101" stroke="#071b35" stroke-width="11" stroke-linecap="round"/><path d="M30 47h34M47 30v34" stroke="#071b35" stroke-width="7" stroke-linecap="round"/></g>
+<text x="125" y="78" font-family="Inter,Arial,sans-serif" font-size="54" font-weight="800" fill="#071b35">Compara</text><text x="363" y="78" font-family="Inter,Arial,sans-serif" font-size="54" font-weight="800" fill="#1b5cff">Plus</text>
+</svg>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b35">
+  <meta name="description" content="ComparaPlus: compara hipotecas, préstamos, cuentas, tarjetas, depósitos y seguros de forma clara y rápida.">
+  <meta property="og:title" content="ComparaPlus — Compara. Elige. Ahorra.">
+  <meta property="og:description" content="Compara productos financieros y encuentra la opción que mejor encaja contigo.">
+  <meta property="og:type" content="website">
+  <title>ComparaPlus — Compara. Elige. Ahorra.</title>
+  <link rel="icon" href="assets/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"ComparaPlus","url":"https://comparaplus.net","description":"Comparador de productos financieros"}
+  </script>
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav-wrap">
+    <a class="brand" href="#top" aria-label="ComparaPlus inicio"><img src="assets/logo.svg" alt="ComparaPlus"></a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#comparadores">Comparadores</a><a href="#destacados">Ofertas</a><a href="#guias">Guías</a>
+    </nav>
+    <a class="nav-cta" href="#comparar">Comparar ahora</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#comparadores">Comparadores</a><a href="#destacados">Ofertas</a><a href="#guias">Guías</a><a href="#comparar">Comparar ahora</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="pill"><span></span> COMPARADOR FINANCIERO</div>
+      <h1>Decisiones financieras,<br><em>más sencillas.</em></h1>
+      <p class="hero-lead">Compara condiciones, descubre alternativas y elige con información clara. Sin complicaciones.</p>
+      <div class="hero-actions">
+        <a class="primary-btn" href="#comparar">Empezar a comparar <b>→</b></a>
+        <a class="text-btn" href="#comparadores">Ver categorías</a>
+      </div>
+      <div class="trust-row"><span>✓</span> Comparación clara <span>✓</span> Sin compromiso <span>✓</span> Datos transparentes</div>
+    </div>
+    <div class="hero-dashboard" aria-label="Vista previa del comparador">
+      <div class="dash-top"><div><small>MEJOR VALORADO</small><strong>Cuenta remunerada</strong></div><span class="score">9,2</span></div>
+      <div class="rate"><div><span>Rentabilidad</span><strong>2,50% <small>TAE</small></strong></div><div><span>Comisiones</span><strong>0 €</strong></div></div>
+      <div class="mini-offer"><div class="bank-mark">+</div><div><b>Oferta destacada</b><small>Condiciones transparentes</small></div><span>→</span></div>
+      <div class="dash-line"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="dash-foot"><span>Comparativa actualizada</span><b>Ver 18 opciones →</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container stats-grid"><div><strong>6</strong><span>categorías financieras</span></div><div><strong>100%</strong><span>información clara</span></div><div><strong>24/7</strong><span>compara cuando quieras</span></div><div><strong>1</strong><span>lugar para decidir</span></div></div>
+</section>
+
+<section id="comparadores" class="section container">
+  <div class="section-heading"><div><span class="kicker">COMPARADORES</span><h2>Encuentra lo que buscas</h2><p>Empieza por el producto financiero que quieres comparar.</p></div><a class="view-all" href="#comparar">Ver comparador →</a></div>
+  <div class="category-grid">
+    <a class="category-card featured" href="#comparar" data-cat="Hipotecas"><div class="cat-icon home">⌂</div><div><h3>Hipotecas</h3><p>Fija, variable y mixta.</p></div><span>→</span></a>
+    <a class="category-card" href="#comparar" data-cat="Préstamos"><div class="cat-icon euro">€</div><div><h3>Préstamos</h3><p>Financia lo que necesitas.</p></div><span>→</span></a>
+    <a class="category-card" href="#comparar" data-cat="Cuentas"><div class="cat-icon">▣</div><div><h3>Cuentas</h3><p>Sin comisiones y remuneradas.</p></div><span>→</span></a>
+    <a class="category-card" href="#comparar" data-cat="Tarjetas"><div class="cat-icon">▤</div><div><h3>Tarjetas</h3><p>Débito, crédito y beneficios.</p></div><span>→</span></a>
+    <a class="category-card" href="#comparar" data-cat="Depósitos"><div class="cat-icon">%</div><div><h3>Depósitos</h3><p>Compara rentabilidad y plazo.</p></div><span>→</span></a>
+    <a class="category-card" href="#comparar" data-cat="Seguros"><div class="cat-icon">◇</div><div><h3>Seguros</h3><p>Protege lo que importa.</p></div><span>→</span></a>
+  </div>
+</section>
+
+<section id="destacados" class="section offers-section">
+  <div class="container">
+    <div class="section-heading"><div><span class="kicker">OPCIONES DESTACADAS</span><h2>Empieza por aquí</h2><p>Ejemplos de cómo presentaremos las mejores alternativas de cada categoría.</p></div><span class="updated">● Actualizado hoy</span></div>
+    <div class="offer-table">
+      <div class="offer-head"><span>PRODUCTO</span><span>CONDICIÓN PRINCIPAL</span><span>COMISIONES</span><span></span></div>
+      <article class="offer-row"><div class="product"><div class="logo-placeholder">B</div><div><b>Cuenta remunerada</b><small>Cuenta bancaria</small></div><label>Destacada</label></div><div class="metric"><strong>Hasta 2,50%</strong><small>TAE</small></div><div class="metric"><strong>0 €</strong><small>mantenimiento</small></div><a class="offer-btn" href="#comparar">Ver opción</a></article>
+      <article class="offer-row"><div class="product"><div class="logo-placeholder">M</div><div><b>Hipoteca fija</b><small>Financiación vivienda</small></div></div><div class="metric"><strong>Desde 2,65%</strong><small>TAE orientativa</small></div><div class="metric"><strong>Consultar</strong><small>según perfil</small></div><a class="offer-btn" href="#comparar">Comparar</a></article>
+      <article class="offer-row"><div class="product"><div class="logo-placeholder">P</div><div><b>Préstamo personal</b><small>Financiación</small></div></div><div class="metric"><strong>Desde 6,90%</strong><small>TAE orientativa</small></div><div class="metric"><strong>0 €</strong><small>en condiciones</small></div><a class="offer-btn" href="#comparar">Comparar</a></article>
+    </div>
+    <p class="legal-note">* Los datos mostrados son ejemplos de diseño y no constituyen una oferta financiera. Las condiciones reales pueden variar según entidad, producto y perfil del cliente.</p>
+  </div>
+</section>
+
+<section id="comparar" class="compare-section">
+  <div class="container compare-box">
+    <div class="compare-copy"><span class="kicker light">COMPARA EN MENOS DE UN MINUTO</span><h2>¿Qué quieres comparar?</h2><p>Selecciona una categoría y te llevaremos al comparador correspondiente.</p><div class="secure"><span>✓</span> Proceso sencillo <span>✓</span> Sin compromiso</div></div>
+    <form class="compare-form" id="compareForm">
+      <label for="category">Elige una categoría</label>
+      <select id="category" required><option value="">Selecciona...</option><option>Hipotecas</option><option>Préstamos</option><option>Cuentas</option><option>Tarjetas</option><option>Depósitos</option><option>Seguros</option><option>Inversión</option></select>
+      <button class="primary-btn" type="submit">Comparar opciones <b>→</b></button>
+      <small>Te mostraremos las opciones disponibles para esa categoría.</small>
+    </form>
+  </div>
+</section>
+
+<section id="guias" class="section container guides">
+  <div class="section-heading"><div><span class="kicker">GUÍAS COMPARAPLUS</span><h2>Antes de elegir, infórmate</h2><p>Explicaciones sencillas para entender las condiciones que realmente importan.</p></div><a class="view-all" href="#guias">Todas las guías →</a></div>
+  <div class="guide-grid">
+    <article class="guide-card"><div class="guide-tag">HIPOTECAS</div><h3>¿Fija, variable o mixta?</h3><p>Qué diferencias hay y qué deberías mirar antes de firmar.</p><a href="#comparar">Leer guía <span>→</span></a></article>
+    <article class="guide-card"><div class="guide-tag">CUENTAS</div><h3>TAE: cómo comparar de verdad</h3><p>Aprende a distinguir rentabilidad, requisitos y comisiones.</p><a href="#comparar">Leer guía <span>→</span></a></article>
+    <article class="guide-card"><div class="guide-tag">PRÉSTAMOS</div><h3>TIN vs. TAE en 2 minutos</h3><p>La diferencia que puede cambiar el coste final de un préstamo.</p><a href="#comparar">Leer guía <span>→</span></a></article>
+  </div>
+</section>
+
+<section class="newsletter"><div class="container newsletter-box"><div><span class="kicker">COMPARAPLUS</span><h2>Más información. Mejores decisiones.</h2><p>Próximamente: alertas de cambios y nuevas ofertas financieras.</p></div><a class="secondary-btn" href="#comparar">Empezar ahora →</a></div></section>
+</main>
+
+<footer>
+  <div class="container footer-main"><div class="footer-brand"><img src="assets/logo.svg" alt="ComparaPlus"><p>Compara. Elige. Ahorra.</p></div><div class="footer-col"><b>Comparadores</b><a href="#comparar">Hipotecas</a><a href="#comparar">Préstamos</a><a href="#comparar">Cuentas</a><a href="#comparar">Tarjetas</a></div><div class="footer-col"><b>Compañía</b><a href="#guias">Guías</a><a href="#">Sobre nosotros</a><a href="#">Contacto</a></div><div class="footer-col"><b>Legal</b><a href="#">Privacidad</a><a href="#">Cookies</a><a href="#">Aviso legal</a></div></div>
+  <div class="container footer-bottom"><span>© 2026 ComparaPlus.net</span><span>Información independiente para comparar mejor.</span></div>
+</footer>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
